@@ -130,7 +130,7 @@ const DonationProgress = () => {
           Donation Progress
         </h1>
         {error ? ( // Conditional rendering based on error state
-          <p className="text-red-500">{error}</p>
+          <p className="text-red-500"></p>
         ) : (
           <>
             <div className="bar progress blue">

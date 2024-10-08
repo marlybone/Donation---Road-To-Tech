@@ -45,5 +45,3 @@ venv
 db.js
 index.js
 /backend/node_modules
-
-/public
