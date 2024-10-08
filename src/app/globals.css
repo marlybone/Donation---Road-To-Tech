@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Inter";
+  src: url("./fonts/Inter.ttf") format("truetype");
+  font-weight: 400; /* You can change this depending on the font weight */
+  font-style: normal; /* Adjust if italic, etc. */
+}
+
+/* Import NunitoSans font */
+@font-face {
+  font-family: "NunitoSans";
+  src: url("./fonts/NunitoSans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+button {
+  font-family: inherit;
+  font-size: 20px;
+  background: #212121;
+  color: white;
+  fill: rgb(155, 153, 153);
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  font-weight: 1000;
+}
+
+button span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+button svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover {
+  background: #000;
+}
+
+button:hover .svg-wrapper {
+  transform: scale(1.25);
+  transition: 0.5s linear;
+}
+
+button:hover svg {
+  transform: translateX(1.2em) scale(1.1);
+  fill: #fff;
+}
+
+button:hover span {
+  opacity: 0;
+  transition: 0.5s linear;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+  gap: 2px;
+}
+
+.mosaic {
+  transition: filter 0.5s ease;
+}
+
+/* Progress Bar Styles */
+.progress-bar-container {
+  width: 100%;
+  background-color: #e2e8f0;
+  border-radius: 0.375rem;
+  height: 1.5rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #3b82f6;
+  transition: width 0.5s ease-in-out;
+}
+
+.bar {
+  box-sizing: content-box;
+  height: 20px; /* Can be anything */
+  position: relative;
+  margin: 60px 0 20px 0; /* Just for demo spacing */
+  background: #555;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.progress > div > div,
+.progress > div::after {
+  background-image: none;
+}
+
+.blue > div {
+  background-image: linear-gradient(#4a90e2, #007aff);
+  border-radius: 10px 2px 2px 10px;
+}
+
+.total-counter {
+  background: linear-gradient(135deg, #4a90e2, #007aff);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  margin: 20px auto;
+  transition: transform 0.3s ease;
+}
+
+.total-counter h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.dark .total-counter {
+  background: linear-gradient(135deg, #333, #555);
+  color: #f0f0f0;
+}
+
+.dark .total-counter h2 {
+  color: #ffffff;
+}

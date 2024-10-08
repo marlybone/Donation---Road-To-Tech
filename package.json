@@ -1,0 +1,28 @@
+{
+  "name": "my-next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prettier": "prettier --write ."
+  },
+  "dependencies": {
+    "@stripe/stripe-js": "^4.7.0",
+    "framer-motion": "^11.5.6",
+    "next": "14.2.13",
+    "react": "^18",
+    "react-dom": "^18",
+    "sharp": "^0.33.5",
+    "stripe": "^17.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.13",
+    "postcss": "^8",
+    "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.1"
+  }
+}
