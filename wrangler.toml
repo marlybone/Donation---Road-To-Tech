@@ -1,8 +1,8 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "my-worker"
 main = "backend/index.js"
-compatibility_date = "2024-10-04"
-compatibility_flags = ["nodejs_compat"]
+compatibility_flags = [ "nodejs_compat" ]
+compatibility_date = "2024-09-23"
 
 # Workers Logs
 # Docs: https://developers.cloudflare.com/workers/observability/logs/workers-logs/
@@ -112,3 +112,8 @@ enabled = true
 # [[vectorize]]
 # binding = "MY_INDEX"
 # index_name = "my-index"
+
+[build]
+command = "npm install"
+upload = { format = "service-worker" }
+externals = ["itty-router"]
