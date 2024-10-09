@@ -5,16 +5,17 @@ import { useDonation } from "./donatecontext";
 export const Totalcount = () => {
   const { totalDonations } = useDonation(); // Use the context to get total donations
   const [fetchedTotal, setFetchedTotal] = useState(0);
+  const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
 
   // Fetch total donations when the component mounts
   useEffect(() => {
     const fetchTotalDonations = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/total-donations",
+          `${API_URL}/api/donation-stats`,
         ); // Adjust the URL if needed
         const data = await response.json();
-        setFetchedTotal(data.totalDonations); // Set the fetched total
+        setFetchedTotal(data.totalAmount); // Set the fetched total
       } catch (error) {
       }
     };

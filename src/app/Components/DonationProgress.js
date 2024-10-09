@@ -11,15 +11,16 @@ const DonationProgress = () => {
   const [error, setError] = useState(null); // State for error handling
 
   const fetchTotalDonationsCount = async () => {
+    const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/total-donations-count"
-      );
+      const response = await fetch(`${API_URL}/api/donation-stats`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      setTotalDonationsCount(data.totalDonationsCount); // Update the total donations count
+      setTotalDonationsCount(data.totalDonations); 
+
+      console.log(data)// Update the total donations count
     } catch (error) {
       console.error("Error fetching total donations count:", error);
       setError("Failed to load donations count."); // Set error message
