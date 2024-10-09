@@ -1,7 +1,10 @@
 {
-  "name": "my-next-app",
+  "name": "donations",
   "version": "0.1.0",
-  "private": true,
+  "main": "page.js",
+  "author": "Marlon Stevenson",
+  "license": "MIT",
+  "homepage": "https://codeincareer.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
