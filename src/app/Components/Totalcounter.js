@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 export const TotalCount = () => {
   const [stats, setStats] = useState({ total_donations: 0, total_amount: 0 });
   const [loading, setLoading] = useState(true);
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
+  const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://backendroutes-cb3812dabf1e.herokuapp.com/";
 
   const fetchDonationStats = async () => {
     try {

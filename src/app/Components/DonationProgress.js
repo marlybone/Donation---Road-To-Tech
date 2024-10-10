@@ -12,7 +12,7 @@ const DonationProgress = () => {
 
   const fetchTotalDonationsCount = async () => {
     const API_URL =
-      process.env.NEXT_PUBLIC_BASE_URL || "https://codeincareer.com";
+      process.env.NEXT_PUBLIC_BASE_URL || "";
     try {
       const response = await fetch(`${API_URL}/api/donation-stats`);
       if (!response.ok) {
