@@ -13,7 +13,7 @@ export const Totalcount = () => {
       try {
         const response = await fetch(`${API_URL}/api/donation-stats`);
         const data = await response.json();
-        setFetchedTotal(data.totalAmount);
+        setFetchedTotal(data.total_amount);
       } catch (error) {
         console.error('Error fetching donation stats:', error);
       }
