@@ -11,7 +11,7 @@ const DonationProgress = () => {
   const [error, setError] = useState(null); // State for error handling
 
   const fetchTotalDonationsCount = async () => {
-    const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
+    const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://codeincareer.com";
     try {
       const response = await fetch(`${API_URL}/api/donation-stats`);
       if (!response.ok) {
