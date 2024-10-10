@@ -127,13 +127,9 @@ const DonationProgress = () => {
         {zoomed && <div style={zoomStyle} />} {/* Show zoom effect only when zoomed */}
       </div>
       <div style={{ position: "relative", zIndex: 1 }}>
-        <h1 className="dark:text-white text-xl flex justify-center">
+        <h1 className="dark:text-white text-xl flex justify-center mb-10">
           Donation Progress
         </h1>
-        {error ? ( // Conditional rendering based on error state
-          <p className="text-red-500"></p>
-        ) : (
-          <>
             <div className="bar progress blue">
               <div
                 style={{
@@ -143,11 +139,9 @@ const DonationProgress = () => {
                 }}
               />
             </div>
-            <p className="dark:text-white justify-center flex font-sans text-lg">
+            <p className="dark:text-white justify-center flex font-sans text-3xl mt-6">
               {progressPercentage.toFixed(2)}%
             </p>
-          </>
-        )}
       </div>
     </div>
   );
