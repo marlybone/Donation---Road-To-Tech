@@ -11,17 +11,16 @@ export const Totalcount = () => {
   useEffect(() => {
     const fetchTotalDonations = async () => {
       try {
-        const response = await fetch(
-          `${API_URL}/api/donation-stats`,
-        ); // Adjust the URL if needed
+        const response = await fetch(`${API_URL}/api/donation-stats`);
         const data = await response.json();
-        setFetchedTotal(data.totalAmount); // Set the fetched total
+        setFetchedTotal(data.totalAmount);
       } catch (error) {
+        console.error('Error fetching donation stats:', error);
       }
     };
-
-    fetchTotalDonations();
-  }, []); // Run once on component mount
+  
+    fetchTotalDonations(); // Call the function
+  }, []); 
 
   // Ensure both fetchedTotal and totalDonations are numbers
   const totalAmount =
