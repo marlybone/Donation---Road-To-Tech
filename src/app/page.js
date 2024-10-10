@@ -2,7 +2,7 @@ import { Donations } from "./Components/Donations";
 import { Hero } from "./Components/Hero";
 // import { Leaderboard } from "./Components/Leaderboard"
 import Mosaic from "./Components/Mosaic";
-import { Totalcount } from "./Components/Totalcounter";
+import { TotalCount } from "./Components/Totalcounter";
 import { Donatebtn } from "./Components/Donatebtn";
 import DonationProgress from "./Components/DonationProgress";
 import React from "react";
@@ -20,7 +20,7 @@ export default function Home() {
         <DonationProgress />
       </div>
       <div className="mb-24">
-        <Totalcount />
+        <TotalCount />
       </div>
       <div className="mb-20">
         <Donations />

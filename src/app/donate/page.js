@@ -11,8 +11,8 @@ export default function Donate() {
             Support My Journey
           </h1>
           <h2 className="text-xl mx-8 font-[Inter]">
-            I&apos;m on a mission to land my first developer job. Your support means
-            everything to me as I work towards this goal!
+            I&apos;m on a mission to land my first developer job. Your support
+            means everything to me as I work towards this goal!
           </h2>
         </div>
         <div className="mb-20">

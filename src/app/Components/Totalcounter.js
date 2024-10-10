@@ -1,39 +1,46 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useDonation } from "./donatecontext";
 
-export const Totalcount = () => {
-  const { totalDonations } = useDonation(); // Use the context to get total donations
-  const [fetchedTotal, setFetchedTotal] = useState(0);
+export const TotalCount = () => {
+  const [stats, setStats] = useState({ total_donations: 0, total_amount: 0 });
+  const [loading, setLoading] = useState(true);
   const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
 
-  // Fetch total donations when the component mounts
-  useEffect(() => {
-    const fetchTotalDonations = async () => {
-      try {
-        const response = await fetch(`${API_URL}/api/donation-stats`);
-        const data = await response.json();
-        setFetchedTotal(data.total_amount);
-      } catch (error) {
-        console.error('Error fetching donation stats:', error);
-      }
-    };
-  
-    fetchTotalDonations(); // Call the function
-  }, []); 
+  const fetchDonationStats = async () => {
+    try {
+      const response = await fetch(`${API_URL}/api/donation-stats`);
 
-  // Ensure both fetchedTotal and totalDonations are numbers
-  const totalAmount =
-    (Number(fetchedTotal) || 0) + (Number(totalDonations) || 0);
+      if (!response.ok) {
+        throw new Error("Failed to fetch donation stats");
+      }
+
+      const data = await response.json();
+      return data; // Returns the donation stats
+    } catch (error) {
+      console.error("Error fetching donation stats:", error);
+      return null; // Return null on error
+    }
+  };
+
+  useEffect(() => {
+    const getDonationStats = async () => {
+      const data = await fetchDonationStats();
+      if (data) {
+        setStats(data); // Update state with fetched stats
+      }
+      setLoading(false); // Set loading to false once data is fetched
+    };
+
+    getDonationStats(); // Fetch donation stats on mount
+  }, []);
+
+  if (loading) {
+    return <div>Loading donation stats...</div>; // Optional loading state
+  }
 
   return (
     <div className="total-counter">
-      {" "}
-      {/* Apply the new CSS class */}
-      <h2>
-        £{totalAmount.toFixed(2)}{" "}
-        {/* Combine fetched total with in-memory total */}
-      </h2>
+      <h2>£{stats.total_amount.toFixed(2)}</h2> {/* Use stats.total_amount */}
     </div>
   );
 };

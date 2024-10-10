@@ -11,15 +11,15 @@ const DonationProgress = () => {
   const [error, setError] = useState(null); // State for error handling
 
   const fetchTotalDonationsCount = async () => {
-    const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://codeincareer.com";
+    const API_URL =
+      process.env.NEXT_PUBLIC_BASE_URL || "https://codeincareer.com";
     try {
       const response = await fetch(`${API_URL}/api/donation-stats`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      setTotalDonationsCount(data.total_donations); // Corrected property name
-  
+      setTotalDonationsCount(data.total_donations); // Correct property name
       console.log(data); // Log the data for debugging
     } catch (error) {
       console.error("Error fetching total donations count:", error);
@@ -32,9 +32,10 @@ const DonationProgress = () => {
   }, []);
 
   useEffect(() => {
+    // Update greyscale value and zoom style when donations count changes
     const progressPercentage = Math.min(
       (totalDonationsCount / donationGoal) * 100,
-      100
+      100,
     );
     const newGreyscaleValue = Math.max(0, 100 - progressPercentage); // Calculate new greyscale value
     setGreyscaleValue(newGreyscaleValue);
@@ -42,7 +43,7 @@ const DonationProgress = () => {
 
   const progressPercentage = Math.min(
     (totalDonationsCount / donationGoal) * 100,
-    100
+    100,
   );
 
   const handleMouseMove = (e) => {
@@ -124,24 +125,25 @@ const DonationProgress = () => {
           className="mosaic-image mb-20"
           priority={true}
         />
-        {zoomed && <div style={zoomStyle} />} {/* Show zoom effect only when zoomed */}
+        {zoomed && <div style={zoomStyle} />}{" "}
+        {/* Show zoom effect only when zoomed */}
       </div>
       <div style={{ position: "relative", zIndex: 1 }}>
         <h1 className="dark:text-white text-xl flex justify-center mb-10">
           Donation Progress
         </h1>
-            <div className="bar progress blue">
-              <div
-                style={{
-                  width: `${progressPercentage}%`,
-                  backgroundColor: "blue",
-                  height: "20px",
-                }}
-              />
-            </div>
-            <p className="dark:text-white justify-center flex font-sans text-3xl mt-6">
-              {progressPercentage.toFixed(2)}%
-            </p>
+        <div className="bar progress blue">
+          <div
+            style={{
+              width: `${progressPercentage}%`,
+              backgroundColor: "blue",
+              height: "20px",
+            }}
+          />
+        </div>
+        <p className="dark:text-white justify-center flex font-sans text-3xl mt-6">
+          {progressPercentage.toFixed(2)}%
+        </p>
       </div>
     </div>
   );
