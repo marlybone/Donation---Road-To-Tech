@@ -25,20 +25,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <Head>
-        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="/favicon.ico"  />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} dark:bg-neutral-900 antialiased max-w-5xl mx-auto px-4 bg-white`}
+        className={`${geistSans.variable} ${geistMono.variable} dark:bg-neutral-900 antialiased max-w-5xl mx-auto px-4 bg-white justifty-center text-center`}
       >
-        <DonationProvider>
-          {" "}
           {/* Wrap children with DonationProvider */}
           <div className="mb-24">
             <Navbar />
           </div>
           {children}
           <Footer />
-        </DonationProvider>
       </body>
     </html>
   );

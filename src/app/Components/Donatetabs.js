@@ -55,8 +55,8 @@ const donationOptions = [
 
 export const Donatetabs = ({ onDonationSuccess }) => {
   return (
-    <div className="flex flex-col items-center ">
-      <div className="flex flex-row space-x-10 mb-10">
+    <div className="flex justify-center items-center">
+      <div className="flex md:flex-row flex-col align-middle content-center space-y-4 md:space-x-10 md:mb-10">
         {donationOptions.map((option) => (
           <div
             key={option.amount}

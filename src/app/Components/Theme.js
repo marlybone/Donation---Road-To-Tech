@@ -28,7 +28,7 @@ const ThemeToggle = () => {
   };
 
   return (
-    <div className="flex space-x-4">
+    <div className="flex space-x-2 md:space-x-4">
       <div
         onClick={() => toggleTheme("light")}
         className={`cursor-pointer ${theme === "light" ? "opacity-100" : "opacity-50"}`}

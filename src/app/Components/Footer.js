@@ -124,7 +124,7 @@ export const Footer = () => {
                   </Link>
                 </div>
               </div>
-              <p className="ml-6 mt-4 leading-6 font-[400] font-[Inter] text-black dark:text-white">
+              <p className="ml-6 mt-4 leading-5 md:font-[400] text-xs md:text-lg font-[Inter] text-black dark:text-white">
                 © 2024 Marlon, All rights reserved.
               </p>
             </div>

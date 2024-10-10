@@ -1,7 +1,5 @@
 import { Donations } from "./Components/Donations";
 import { Hero } from "./Components/Hero";
-// import { Leaderboard } from "./Components/Leaderboard"
-import Mosaic from "./Components/Mosaic";
 import { TotalCount } from "./Components/Totalcounter";
 import { Donatebtn } from "./Components/Donatebtn";
 import DonationProgress from "./Components/DonationProgress";
