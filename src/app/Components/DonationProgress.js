@@ -19,8 +19,7 @@ const DonationProgress = () => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      setTotalDonationsCount(data.total_donations); // Correct property name
-      console.log(data); // Log the data for debugging
+      setTotalDonationsCount(data.total_donations); 
     } catch (error) {
       console.error("Error fetching total donations count:", error);
       setError("Failed to load donations count."); // Set error message
