@@ -106,6 +106,11 @@ const DonationProgress = () => {
     <div className="font-[Inter]" style={{ position: "relative" }}>
       <div
         className="mosaic-container"
+        style={{
+          filter: `grayscale(${greyscaleValue}%)`,
+          transition: "filter 0.5s ease",
+          position: "relative",
+        }} // Ensure relative positioning
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -120,11 +125,6 @@ const DonationProgress = () => {
           height={1500}
           className="mosaic-image mb-20"
           priority={true}
-          style={{
-            filter: `grayscale(${greyscaleValue}%)`,
-            transition: "filter 0.5s ease",
-            position: "relative",
-          }} 
         />
         {zoomed && <div style={zoomStyle} />}{" "}
         {/* Show zoom effect only when zoomed */}
