@@ -56,11 +56,11 @@ const donationOptions = [
 export const Donatetabs = ({ onDonationSuccess }) => {
   return (
     <div className="flex justify-center items-center">
-      <div className="flex md:flex-row flex-col align-middle content-center space-y-4 md:space-x-10 md:mb-10">
+      <div className="flex md:flex-row flex-col align-middle content-center md:space-x-10 md:mb-10">
         {donationOptions.map((option) => (
           <div
             key={option.amount}
-            className="space-y-6 w-[190px] h-[254px] flex-col bg-[rgba(217,217,217,0.58)] border border-white shadow-[12px_17px_51px_rgba(0,0,0,0.22)] backdrop-blur-[6px] rounded-[17px] text-center cursor-pointer flex items-center justify-center select-none font-bold text-black"
+            className="space-y-6 w-[190px] h-[254px] mt-2 flex-col bg-[rgba(217,217,217,0.58)] border border-white shadow-[12px_17px_51px_rgba(0,0,0,0.22)] backdrop-blur-[6px] rounded-[17px] text-center cursor-pointer flex items-center justify-center select-none font-bold text-black"
           >
             {option.svg}
             <h2 className="text-xl font-semibold mb-2text-black">
