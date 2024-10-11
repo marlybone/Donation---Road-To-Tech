@@ -70,7 +70,7 @@ const DonationProgress = () => {
   };
 
   const handleTouchMove = (e) => {
-    const img = e.target;
+    const img = e.currentTarget;
     const rect = img.getBoundingClientRect();
     const touch = e.touches[0]; // Get the first touch point
     const x = touch.clientX - rect.left; // x position within the image
@@ -88,6 +88,8 @@ const DonationProgress = () => {
       boxShadow: "0 0 10px rgba(0, 0, 0, 0.5)",
       display: "block",
       zIndex: 10,
+      top: `${y - 125}px`,
+      left: `${x - 125}px`,
       transition: "background-size 0.2s ease",
     });
   };
