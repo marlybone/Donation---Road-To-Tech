@@ -2,7 +2,7 @@ import React from "react";
 
 export const Donations = () => {
   return (
-    <div className="dark:text-white">
+    <div className="dark:text-white text-black">
       <h1 className="mb-8 md:text-6xl font-[800] font-[Inter] text-3xl">
         How It Works:
       </h1>
