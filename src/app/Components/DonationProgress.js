@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
 
 const DonationProgress = () => {
@@ -16,43 +16,36 @@ const DonationProgress = () => {
     try {
       const response = await fetch(`${API_URL}`);
       if (!response.ok) {
-        throw new Error("Network response was not oook");
+        throw new Error("Network response was not ok");
       }
       const data = await response.json();
+      console.log(data);
       return data; // Returns the donation stats
     } catch (error) {
-      console.error("Error fetching donation stats:", error);
+      console.error(error);
       setError("Failed to load donation stats."); // Set error message
-      return null; // Return null on error
+      return null;
     }
   };
 
   useEffect(() => {
     const getDonationStats = async () => {
       const data = await fetchDonationStats();
-      if (data) {
-        setStats(data); // Update state with fetched stats
-      }
-      setLoading(false); // Set loading to false once data is fetched
+      if (data) setStats(data);
+      setLoading(false);
     };
 
-    getDonationStats(); // Fetch donation stats on mount
+    getDonationStats();
   }, []);
 
-  useEffect(() => {
-    // Update greyscale value when donations count changes
-    const progressPercentage = Math.min(
-      (stats.total_donations / donationGoal) * 100,
-      100
-    );
-    const newGreyscaleValue = Math.max(0, 100 - progressPercentage); // Calculate new greyscale value
-    setGreyscaleValue(newGreyscaleValue);
+  const progressPercentage = useMemo(() => {
+    return Math.min((stats.total_donations / donationGoal) * 100, 100);
   }, [stats.total_donations]);
 
-  const progressPercentage = Math.min(
-    (stats.total_donations / donationGoal) * 100,
-    100
-  );
+  useEffect(() => {
+    const newGreyscaleValue = Math.max(0, 100 - progressPercentage);
+    setGreyscaleValue(newGreyscaleValue);
+  }, [progressPercentage]);
 
   const handleMouseMove = (e) => {
     const img = e.currentTarget; // Use currentTarget to get the correct element
@@ -156,7 +149,7 @@ const DonationProgress = () => {
         </p>
       </div>
       <div className="total-counter">
-        <h2>£{stats.total_amount.toFixed(2)}</h2> 
+        <h2>£{stats.total_amount.toFixed(2)}</h2>
       </div>
     </div>
   );
