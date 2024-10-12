@@ -3,7 +3,7 @@ import React from "react";
 export const Donations = () => {
   return (
     <div className="dark:text-white text-black">
-      <h1 className="mb-8 md:text-6xl font-[800] font-[Inter] text-3xl">
+      <h1 className="mb-8 md:text-6xl font-[Inter] text-3xl">
         How It Works:
       </h1>
       <ul className="mb-10 md:text-xl leading-10 font-[Inter] text-md space-y-3">
