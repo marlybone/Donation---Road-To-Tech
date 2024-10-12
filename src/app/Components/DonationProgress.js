@@ -3,46 +3,55 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 const DonationProgress = () => {
-  const [totalDonationsCount, setTotalDonationsCount] = useState(0);
+  const [stats, setStats] = useState({ total_donations: 0, total_amount: 0 });
+  const [loading, setLoading] = useState(true);
   const [greyscaleValue, setGreyscaleValue] = useState(100); // State for greyscale
   const [zoomed, setZoomed] = useState(false); // State for zoom
   const donationGoal = 100; // Set your donation goal
   const [zoomStyle, setZoomStyle] = useState({});
   const [error, setError] = useState(null); // State for error handling
 
-  const fetchTotalDonationsCount = async () => {
-    const API_URL =
-      process.env.NEXT_PUBLIC_BASE_URL || "";
+  const fetchDonationStats = async () => {
+    const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
     try {
-      const response = await fetch(`${API_URL}/api/donation-stats`);
+      const response = await fetch(`${API_URL}`);
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error("Network response was not oook");
       }
       const data = await response.json();
-      setTotalDonationsCount(data.total_donations); 
+      return data; // Returns the donation stats
     } catch (error) {
-      console.error("Error fetching total donations count:", error);
-      setError("Failed to load donations count."); // Set error message
+      console.error("Error fetching donation stats:", error);
+      setError("Failed to load donation stats."); // Set error message
+      return null; // Return null on error
     }
   };
 
   useEffect(() => {
-    fetchTotalDonationsCount(); // Fetch total donations count when the component mounts
+    const getDonationStats = async () => {
+      const data = await fetchDonationStats();
+      if (data) {
+        setStats(data); // Update state with fetched stats
+      }
+      setLoading(false); // Set loading to false once data is fetched
+    };
+
+    getDonationStats(); // Fetch donation stats on mount
   }, []);
 
   useEffect(() => {
-    // Update greyscale value and zoom style when donations count changes
+    // Update greyscale value when donations count changes
     const progressPercentage = Math.min(
-      (totalDonationsCount / donationGoal) * 100,
-      100,
+      (stats.total_donations / donationGoal) * 100,
+      100
     );
     const newGreyscaleValue = Math.max(0, 100 - progressPercentage); // Calculate new greyscale value
     setGreyscaleValue(newGreyscaleValue);
-  }, [totalDonationsCount]);
+  }, [stats.total_donations]);
 
   const progressPercentage = Math.min(
-    (totalDonationsCount / donationGoal) * 100,
-    100,
+    (stats.total_donations / donationGoal) * 100,
+    100
   );
 
   const handleMouseMove = (e) => {
@@ -142,9 +151,12 @@ const DonationProgress = () => {
             }}
           />
         </div>
-        <p className="dark:text-white justify-center flex font-sans text-3xl mt-6">
+        <p className="dark:text-white justify-center flex font-sans text-3xl mt-6 mb-16">
           {progressPercentage.toFixed(2)}%
         </p>
+      </div>
+      <div className="total-counter">
+        <h2>£{stats.total_amount.toFixed(2)}</h2> 
       </div>
     </div>
   );

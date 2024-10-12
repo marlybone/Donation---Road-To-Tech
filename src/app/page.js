@@ -1,6 +1,6 @@
 import { Donations } from "./Components/Donations";
 import { Hero } from "./Components/Hero";
-import { TotalCount } from "./Components/Totalcounter";
+// import { TotalCount } from "./Components/Totalcounter";
 import { Donatebtn } from "./Components/Donatebtn";
 import DonationProgress from "./Components/DonationProgress";
 import React from "react";
@@ -17,9 +17,9 @@ export default function Home() {
       <div className="mb-10">
         <DonationProgress />
       </div>
-      <div className="mb-24">
+      {/* <div className="mb-24">
         <TotalCount />
-      </div>
+      </div> */}
       <div className="mb-20">
         <Donations />
       </div>
