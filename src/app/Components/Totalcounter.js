@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 export const TotalCount = () => {
   const [stats, setStats] = useState({ total_donations: 0, total_amount: 0 });
   const [loading, setLoading] = useState(true);
-  const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "https://backendroutes-cb3812dabf1e.herokuapp.com/";
+  const API_URL = process.env.NEXT_PUBLIC_BASE_URL || "";
 
   const fetchDonationStats = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/donation-stats`);
+      const response = await fetch(`${API_URL}`);
 
       if (!response.ok) {
         throw new Error("Failed to fetch donation stats");
